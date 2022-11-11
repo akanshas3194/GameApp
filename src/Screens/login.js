@@ -1,10 +1,10 @@
-import { StyleSheet, View } from 'react-native';
-import AppStack from './src/Navigation/appStack';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+
+function Login() {
   return (
     <View style={styles.container}>
-      <AppStack/>
+  <Text>Login</Text>
      
     </View>
   );
@@ -17,3 +17,5 @@ const styles = StyleSheet.create({
    
   },
 });
+
+export default Login;
