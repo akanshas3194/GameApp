@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text,Image, TextInput, TouchableOpacity,ScrollView, StyleSheet, FlatList } from 'react-native';
-import GameList from '../Components/gameList';
-import Switch from '../Components/Switch';
+import GameList from '../Components/gameListComponent';
+import Switch from '../Components/switchComponent';
 import {paidGames, freeGames} from '../Components/Data';
 
 const Home=()=>{
@@ -12,13 +12,12 @@ const Home=()=>{
     setGamesTab(value)
  }
 
-    return(
-       
-        <View style={styles.container}>
-             <ScrollView showsVerticalScrollIndicator={false} style={{padding:5}}>
-            <View style={styles.headingContainer}>
+ const listHeaderComponent=()=>{
+  
+ return   <View style={{flex:1}}>
+          <View style={styles.headingContainer}>
                 <Text style={{marginTop:8}}>Hello John</Text>
-                <Image source={require('../../assets/prf.png')} style={styles.imgStyles}/>
+                <TouchableOpacity ><Image source={require('../../assets/prf.png')} style={styles.imgStyles}/></TouchableOpacity>
             </View>
            <View style={styles.textInputContainer}>
             <TextInput placeholder='search' placeholderTextColor={"#d9d9d9"}/>
@@ -34,18 +33,17 @@ const Home=()=>{
                 </View>
 
             <Switch selectionmode={gamestab} option1='Free to play' option2='Paid games' onselectSwitch={onselectSwitch} />
-               
-            <FlatList
-        data={gamestab ==1  ? freeGames : paidGames}
-        renderItem={({item})=><GameList item={item}/>}
-        keyExtractor={(item) => item.id}/>
+    </View>
+ }
 
-               </ScrollView>
-           
-            
-        </View>
-       
-    )
+    return(
+        <View style={styles.container}>
+        <FlatList
+        data={gamestab ==1  ? freeGames : paidGames}
+        renderItem={({item})=><GameList item={item} />}
+        keyExtractor={(item) => item.id} ListHeaderComponent={listHeaderComponent}/>
+       </View>
+        )
 }
 
 
@@ -55,6 +53,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1, 
         backgroundColor:"#fff",  
+        padding:10
        },
     headingContainer:{
         flexDirection:"row", 

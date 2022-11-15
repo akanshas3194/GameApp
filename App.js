@@ -1,12 +1,18 @@
+import 'react-native-gesture-handler';
 import { StyleSheet, View } from 'react-native';
-import AppStack from './src/Navigation/appStack';
+import DrawerStack from './src/Navigation/drawerStack';
+import store from './src/Store/store';
+import { Provider } from 'react-redux';
 
 export default function App() {
   return (
+    <Provider store={store}>
     <View style={styles.container}>
-      <AppStack/>
-     
+    
+    <DrawerStack/>
+   
     </View>
+    </Provider>
   );
 }
 
