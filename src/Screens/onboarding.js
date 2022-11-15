@@ -1,8 +1,35 @@
 import { View,Text, TouchableOpacity, Image, SafeAreaView, StyleSheet} from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { checkAuthentication } from '../Store/Slices/authSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Onboarding=({navigation})=>{
  
+
+    const dispatch = useDispatch();
+
+    const checkUserAuth=async()=>{
+
+        const token =  await AsyncStorage.getItem('Token_Key1')
+
+        if (token != null)
+        {
+            dispatch(checkAuthentication(2))
+        }
+        else{
+            dispatch(checkAuthentication(1))
+        }
+    }
+
+    useEffect(()=>{
+
+        setTimeout(() => {
+            checkUserAuth()
+          }, 2000);
+
+    },[])
+
     return(
       
         <SafeAreaView style={styles.container}>

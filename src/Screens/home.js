@@ -3,10 +3,14 @@ import { View, Text,Image, TextInput, TouchableOpacity,ScrollView, StyleSheet, F
 import GameList from '../Components/gameListComponent';
 import Switch from '../Components/switchComponent';
 import {paidGames, freeGames} from '../Components/Data';
+import { requestForLogoutUser } from '../Store/Slices/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Home=()=>{
    
     const [gamestab, setGamesTab]= useState(1)
+    
+    const dispatch = useDispatch();
 
  const onselectSwitch=(value)=>{
     setGamesTab(value)
@@ -19,6 +23,7 @@ const Home=()=>{
                 <Text style={{marginTop:8}}>Hello John</Text>
                 <TouchableOpacity ><Image source={require('../../assets/prf.png')} style={styles.imgStyles}/></TouchableOpacity>
             </View>
+            <TouchableOpacity onPress={()=>dispatch(requestForLogoutUser())}><Text>Log out</Text></TouchableOpacity>
            <View style={styles.textInputContainer}>
             <TextInput placeholder='search' placeholderTextColor={"#d9d9d9"}/>
            </View>

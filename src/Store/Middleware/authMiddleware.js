@@ -19,8 +19,8 @@ const authMiddleware= () => ({dispatch})=>next => async action =>{
         })
           
         
-        {onSuccess && typeof onSuccess === 'string' && dispatch({type:onSuccess, payload:response.data.token})}
-        {onSuccess && typeof onSuccess === 'function' && onSuccess({dispatch, response})}
+        {onSuccess && typeof onSuccess === 'string' && dispatch({type:onSuccess, payload:response.data})}
+        {onSuccess && typeof onSuccess === 'function' && onSuccess(dispatch, response.data.token)}
 
     }
 

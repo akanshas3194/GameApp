@@ -7,24 +7,27 @@ import Setting from '../Screens/setting';
 import Login from '../Screens/login';
 import SignUp from '../Screens/signup';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
+import Onboarding from '../Screens/onboarding';
 
 const DrawerStack=()=>{
     const Stack = createNativeStackNavigator();
-    const Drawer = createDrawerNavigator();
+   
+    const userAuth=useSelector(state=>state.auth.userAuth)
+
+
     return(
 
+      
         <NavigationContainer>
-          <Stack.Navigator>
-          <Stack.Screen name="onboarding" component={Onboarding} options={{headerShown:false}} /> 
-          </Stack.Navigator>
-          
-        <Drawer.Navigator screenOptions={{headerShown:false}}>
-          <Drawer.Screen name="Home" component={AppStack} />
-          <Drawer.Screen name="Setting" component={AuthStack} />
-          <Drawer.Screen name="Profile" component={Setting}/>
-          <Drawer.Screen name="Login" component={Login}/>
-          <Drawer.Screen name="Signup" component={SignUp}/>
-        </Drawer.Navigator>
+
+
+<Stack.Navigator screenOptions={{headerShown:false}}>
+{userAuth===0 && <Stack.Screen name="onboarding" component={Onboarding} /> }
+{userAuth===2 && <Stack.Screen name="App" component={AppStack} />}
+{userAuth===1 &&  <Stack.Screen name="Auth" component={AuthStack} />}
+     </Stack.Navigator>
+      
       </NavigationContainer>
     )
 }
