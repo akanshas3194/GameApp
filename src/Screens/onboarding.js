@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { checkAuthentication } from '../Store/Slices/authSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Onboarding=({navigation})=>{
+const Onboarding=()=>{
  
 
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Onboarding=({navigation})=>{
             <View  style={styles.imageContainer}>
             <Image source={require('../../assets/logo.png')} style={styles.image}/></View>
             <View style={styles.btnContainer}>
-                <TouchableOpacity onPress={()=>navigation.navigate('home')}style={styles.btn}>
+                <TouchableOpacity style={styles.btn}>
             <Text style={styles.text}>Lest's Begin</Text>
             <Text style={styles.text}>~</Text>
             </TouchableOpacity></View>
