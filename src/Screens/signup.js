@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View,Keyboard } from 'react-native';
 import ButtonComponent from '../Components/buttonComponent';
 import TextComponent from '../Components/textComponent';
 
 
-function SignUp() {
+function SignUp({navigation}) {
 
   const[signupdetails, setsignupDetails] = useState({fullname:'', mobilenumber:'',username: '', password:'', password2:''})
   const [isKeyboard, setKeyboard] = useState(Boolean);
@@ -14,7 +14,7 @@ function SignUp() {
   }
 
   const pressHandler=()=>{
-    console.log(signupdetails)
+    // console.log(signupdetails)
     }
 
     useEffect(() => {
@@ -85,7 +85,7 @@ function SignUp() {
      
    {!isKeyboard && (   <View style={{flexDirection:"row", bottom:25,  alignSelf: "center",alignItems:"center", position:"absolute"}}>
       <Text>Already have an account </Text>
-      <TouchableOpacity><Text style={{color:"blue"}}>click here !</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=> navigation.navigate('Login')}><Text style={{color:"blue"}}>click here !</Text></TouchableOpacity>
      </View> )}
     </View>
   );

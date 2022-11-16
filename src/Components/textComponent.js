@@ -9,7 +9,7 @@ const TextComponent=({value, changeHandler, textplaceHolder,textLabel, keyName})
          <TextInput 
          placeholder={textplaceHolder} 
          placeholderTextColor="#d3d3d3" 
-         style={{borderWidth:1, borderRadius:10, borderColor:"lightgrey",height:39,}} 
+         style={{borderWidth:1, borderRadius:10, borderColor:"lightgrey",height:39, textAlign:"justify", paddingLeft:2}} 
          value={value} 
          onChangeText={(text)=> changeHandler(text, keyName)}/>
     

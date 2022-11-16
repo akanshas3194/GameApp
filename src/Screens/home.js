@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text,Image, TextInput, TouchableOpacity,ScrollView, StyleSheet, FlatList } from 'react-native';
+import { View, Text,Image, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import GameList from '../Components/gameListComponent';
 import Switch from '../Components/switchComponent';
 import {paidGames, freeGames} from '../Components/Data';
@@ -20,25 +20,20 @@ const Home=()=>{
   
  return   <View style={{flex:1}}>
           <View style={styles.headingContainer}>
-                <Text style={{marginTop:8}}>Hello John</Text>
-                <TouchableOpacity ><Image source={require('../../assets/prf.png')} style={styles.imgStyles}/></TouchableOpacity>
-            </View>
-            <TouchableOpacity onPress={()=>dispatch(requestForLogoutUser())}><Text>Log out</Text></TouchableOpacity>
+            <Text style={{marginTop:8}}>Hello John</Text>
+            <TouchableOpacity><Image source={require('../../assets/prf.png')} style={styles.imgStyles}/>
+            </TouchableOpacity></View>
+            <TouchableOpacity onPress={()=>dispatch(requestForLogoutUser())}>
+            <Text>Log out</Text></TouchableOpacity>
            <View style={styles.textInputContainer}>
-            <TextInput placeholder='search' placeholderTextColor={"#d9d9d9"}/>
-           </View>
-
-           <View style={styles.container2}>
-                <Text>Upcoming Games</Text>
-               <TouchableOpacity><Text style={{color:"blue"}}>See all</Text></TouchableOpacity>
-            </View>
-        
-            <View style={styles.craouselContainer}>
-                <Image source={require('../../assets/game-1.jpeg')} style={{height:147, width:'100%', borderRadius:10, resizeMode:"stretch"}}/>
-                </View>
-
-            <Switch selectionmode={gamestab} option1='Free to play' option2='Paid games' onselectSwitch={onselectSwitch} />
-    </View>
+            <TextInput placeholder='search' placeholderTextColor={"#d9d9d9"}/></View>
+            <View style={styles.container2}><Text>Upcoming Games</Text>
+            <TouchableOpacity><Text style={{color:"blue"}}>See all</Text></TouchableOpacity></View>
+           <View style={styles.craouselContainer}>
+            <Image source={require('../../assets/game-1.jpeg')} 
+            style={{height:147, width:'100%', borderRadius:10, resizeMode:"stretch"}}/></View>
+            <Switch selectionmode={gamestab} option1='Free to play' 
+             option2='Paid games' onselectSwitch={onselectSwitch}/></View>
  }
 
     return(
@@ -96,10 +91,6 @@ const styles = StyleSheet.create({
         marginVertical:10, 
         borderColor:"#fff"
     },
-   
-
-    
-    
 })
 
 export default Home;

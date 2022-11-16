@@ -17,13 +17,9 @@ const Switch=({selectionmode, option1, option2, onselectSwitch})=>{
         borderRadius:15,justifyContent:"center",alignItems:'center'}} activeOpacity={1} onPress={()=> updateSwitchData(1)}>
                 <Text style={{fontSize:12,fontWeight:"bold",color: getSelectionmode ==1 ?'white':`#8b008b`}}>{option1}</Text>
             </TouchableOpacity>
-        
-        
-           <TouchableOpacity style={{flex:1,backgroundColor: getSelectionmode ==2 ?'#8b008b':`#efd8f0` , borderRadius:15,
+       <TouchableOpacity style={{flex:1,backgroundColor: getSelectionmode ==2 ?'#8b008b':`#efd8f0` , borderRadius:15,
         justifyContent:"center",
-        alignItems:'center'
-       
-    }} activeOpacity={1}  onPress={()=> updateSwitchData(2)}>
+        alignItems:'center'}} activeOpacity={1}  onPress={()=> updateSwitchData(2)}>
                 <Text style={{
         fontSize:12,
         fontWeight:"bold",
