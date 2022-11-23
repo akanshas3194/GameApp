@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text,Image, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import GameList from '../Components/gameListComponent';
 import Switch from '../Components/switchComponent';
 import {paidGames, freeGames} from '../Components/Data';
-import { requestForLogoutUser } from '../Store/Slices/authSlice';
-import { useDispatch } from 'react-redux';
+import { requestForGameList, requestForLogoutUser } from '../Store/Slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import loading from '../HOC/loading';
+import Loader from '../HOC/loading';
+
 
 const Home=()=>{
    
     const [gamestab, setGamesTab]= useState(1)
     
     const dispatch = useDispatch();
-
- const onselectSwitch=(value)=>{
+    const items=useSelector(state=> state.auth.Item)
+   
+    const onselectSwitch=(value)=>{
     setGamesTab(value)
- }
+   }
 
- const listHeaderComponent=()=>{
+    useEffect(()=>{ 
+ 
+    dispatch(requestForGameList())
+    },[])
+
+  const listHeaderComponent=()=>{
   
- return   <View style={{flex:1}}>
+  return  <View style={{flex:1}}>
           <View style={styles.headingContainer}>
             <Text style={{marginTop:8}}>Hello John</Text>
             <TouchableOpacity><Image source={require('../../assets/prf.png')} style={styles.imgStyles}/>
@@ -32,6 +41,7 @@ const Home=()=>{
            <View style={styles.craouselContainer}>
             <Image source={require('../../assets/game-1.jpeg')} 
             style={{height:147, width:'100%', borderRadius:10, resizeMode:"stretch"}}/></View>
+            
             <Switch selectionmode={gamestab} option1='Free to play' 
              option2='Paid games' onselectSwitch={onselectSwitch}/></View>
  }
@@ -39,14 +49,13 @@ const Home=()=>{
     return(
         <View style={styles.container}>
         <FlatList
-        data={gamestab ==1  ? freeGames : paidGames}
+        data={items}
+        //gamestab ==1  ? freeGames : paidGames
         renderItem={({item})=><GameList item={item} />}
         keyExtractor={(item) => item.id} ListHeaderComponent={listHeaderComponent}/>
        </View>
         )
 }
-
-
 
 const styles = StyleSheet.create({
       
@@ -93,4 +102,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Home;
+export default Loader(Home);

@@ -2,8 +2,9 @@ import {createSlice, createAction} from "@reduxjs/toolkit"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState= {
-    Item:{},
-    userAuth:0
+    Item:[],
+    userAuth:0,
+    isloading:false
 }
 export const authAction = createAction('apiCallStart')
 
@@ -12,7 +13,9 @@ const Authslice =createSlice({
     initialState:initialState,
     reducers:{
     getToken:(state, action)=>{
+        state.isloading=true
         state.Item=action.payload
+        state.isloading=false
      
     },
     checkAuthentication:(state, action)=>{
@@ -50,4 +53,10 @@ export const requestForLogoutUser=()=> authAction({
     url: "https://62e8c790249bb1284eb3a622.mockapi.io/data",
     onSuccess:getLogout.type,
 
+})
+
+export const requestForGameList=()=> authAction({
+    url:"https://62e8c790249bb1284eb3a622.mockapi.io/Education",
+    onSuccess:getToken.type,
+    
 })

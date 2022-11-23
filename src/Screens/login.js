@@ -39,8 +39,8 @@ function Login({navigation}) {
 
   return (
       <View style={styles.container}>
-      <View style={{ height: 150, justifyContent: "center",alignItems: "center", marginTop:40}}>
-     <Text style={{fontSize:28, fontWeight:"bold", color:"darkblue"}}>Welcome In GAMEON</Text>
+      <View style={{ height: 150, justifyContent: "center",alignItems: "center", marginTop:40,}}>
+     <Text style={{fontSize:32, fontWeight:"bold", color:"darkblue"}}>Welcome In GAMEON</Text>
      </View>
    
      <TextComponent

@@ -7,15 +7,15 @@ const GameList=(props)=>{
     return(
         <View style={styles.Container}>
         <View style={styles.gamelistContainer}>
-              <Image source={poster} style={styles.imgList}/>
+              <Image source={{uri:poster}} style={styles.imgList}/>
            <View style={{flexDirection:"column", marginLeft:4}}>
-            <Text numberOfLines={1}>{title}</Text>
-            <Text>{subtitle}</Text></View>
+            <Text numberOfLines={1} style={{fontSize:14}}>{title}</Text>
+            <Text style={{fontSize:11}}>{subtitle}</Text></View>
         
         </View>
         <TouchableOpacity style={styles.btnstyle}>
         <Text style={{fontWeight:"bold", fontSize:12, textAlign:"center",}}>
-            {isFree=='No'?price:<Text>play</Text>}</Text>
+            {isFree !=='False'?price:<Text>play</Text>}</Text>
         </TouchableOpacity>
          </View>
     )

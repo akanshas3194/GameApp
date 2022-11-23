@@ -5,6 +5,8 @@ import store from './src/Store/store';
 import { Provider } from 'react-redux';
 import { IconComponentProvider } from "@react-native-material/core";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Profile from './src/Screens/profile';
+import Home from './src/Screens/home';
 
 export default function App() {
   return (
@@ -13,8 +15,11 @@ export default function App() {
        <IconComponentProvider IconComponent={MaterialCommunityIcons}>
     <View style={styles.container}>
    
-    <DrawerStack/>
+     <DrawerStack/>
     
+    {/* <Profile/> */}
+
+    {/* <Home/> */}
     </View>
     </IconComponentProvider>
     </Provider>
