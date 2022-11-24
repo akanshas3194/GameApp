@@ -5,7 +5,6 @@ import Switch from '../Components/switchComponent';
 import {paidGames, freeGames} from '../Components/Data';
 import { requestForGameList, requestForLogoutUser } from '../Store/Slices/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import loading from '../HOC/loading';
 import Loader from '../HOC/loading';
 
 

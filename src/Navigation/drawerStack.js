@@ -14,9 +14,9 @@ const DrawerStack=()=>{
     return(
         <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
-           {userAuth===0 && <Stack.Screen name="onboarding" component={Onboarding} /> }
-           {userAuth===2 && <Stack.Screen name="App" component={AppStack} />}
-           {userAuth===1 &&  <Stack.Screen name="Auth" component={AuthStack} />}
+           {userAuth===0 && <Stack.Screen name="onboarding" component={Onboarding}/> }
+           {userAuth===2 && <Stack.Screen name="App" component={AppStack}/>}
+           {userAuth===1 && <Stack.Screen name="Auth" component={AuthStack}/>}
         </Stack.Navigator>
       
       </NavigationContainer>

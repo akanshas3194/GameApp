@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator,  } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const Loader=(Component)=>{
@@ -11,14 +11,14 @@ const Loader=(Component)=>{
         return(
 
             <View style={{flex:1,}}>
+                <Text>Hello</Text>
             <Component/>
            
            {isloading && 
            <View style={[
             StyleSheet.absoluteFill,
             { backgroundColor: "#fff", justifyContent: 'center' }
-          ]}><ActivityIndicator>
-                <Text>Loading...</Text></ActivityIndicator>
+          ]}><ActivityIndicator size="large" />
                 </View>}
                 </View>
         )
@@ -28,3 +28,9 @@ const Loader=(Component)=>{
 }
 
 export default Loader;
+
+
+   
+
+ 
+

@@ -4,9 +4,9 @@ const authMiddleware= () => ({dispatch})=>next => async action =>{
     if(action.type !== 'apiCallStart') return next(action)
 
     next(action);
-    const {setData, url, data, method, headers, onSuccess} = action.payload
+    const {setData, url, data, method, headers, onSuccess,onRequestStart} = action.payload
 
-
+    dispatch({type:onRequestStart})
     try{
 
         let response = await axios.request({

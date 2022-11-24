@@ -1,6 +1,5 @@
 import React from 'react';
 import { createDrawerNavigator  } from '@react-navigation/drawer';
-import Home from '../Screens/home';
 import Setting from '../Screens/setting';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import About from '../Screens/about';
@@ -10,6 +9,7 @@ import Contact from '../Screens/contact';
 import CustomDrawer from '../Components/customdrawerComponent';
 import { Icon } from "@react-native-material/core";
 import AddGame from '../Screens/addGame';
+import home from '../Screens/home';
 
 const TabStack=()=>{
 
@@ -37,7 +37,7 @@ const TabStack=()=>{
 
         })} style={{backgroundColor:"#efd8f0"}}
          >
-        <Tab.Screen name="Home" component={Home}/>
+        <Tab.Screen name="Home" component={home}/>
         <Tab.Screen name="Add" component={AddGame}/>
         <Tab.Screen name="profile." component={Profile}/>
         <Tab.Screen name="Settings" component={Setting}/>

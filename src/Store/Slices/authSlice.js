@@ -13,7 +13,6 @@ const Authslice =createSlice({
     initialState:initialState,
     reducers:{
     getToken:(state, action)=>{
-        state.isloading=true
         state.Item=action.payload
         state.isloading=false
      
@@ -26,11 +25,14 @@ const Authslice =createSlice({
         AsyncStorage.removeItem('Token_Key1')
         state.userAuth=1
         
-    }
+    },
+    addCardLoaderStart:(load, action)=>{
+        load.isloading=true
+      }
 }
 })
 
-export const{checkAuthentication, getToken, getLogout} = Authslice.actions;
+export const{checkAuthentication, getToken, getLogout,addCardLoaderStart } = Authslice.actions;
 export default Authslice.reducer;
 
 
@@ -58,5 +60,5 @@ export const requestForLogoutUser=()=> authAction({
 export const requestForGameList=()=> authAction({
     url:"https://62e8c790249bb1284eb3a622.mockapi.io/Education",
     onSuccess:getToken.type,
-    
+    onRequestStart:addCardLoaderStart.type
 })
